@@ -11,7 +11,7 @@
 </head>
 <body>
     <div class="background">
-        <div class="container">
+        <div class="container" id="app">
             <!-- colonna contatti -->
             <div class="column-contact">
                 <!-- profilo -->
@@ -44,11 +44,11 @@
                 <!-- contatti -->
                 <div class="contact">
                     <ul>
-                        <li>
+                        <li v-for="(contact, index) in contacts">
                             <div class="user">
-                                <img src="img/avatar_1.jpg" alt="avatar_1">
+                                <img :src="contact.img" :alt="contact.avatar">
                                 <div>
-                                    <div>Michele</div>
+                                    <div><strong>{{contact.name}}</strong></div>
                                     <small>Ultimo messaggio inviato</small>
                                 </div>
                             </div>
@@ -75,7 +75,9 @@
                 </div>
                 <!-- chat -->
                 <div class="chat">
-
+                    <div class="chat-me"><span>Hai portato a spasso il cane?</span></div>
+                    <div class="chat-me"><span>Ricordati di stendere i panni</span></div>
+                    <div class="chat-you"><span>Tutto fatto!</span></div>
                 </div>
                 <!-- invio messaggi -->
                 <div class="input-messagge">
