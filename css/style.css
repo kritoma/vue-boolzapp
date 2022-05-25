@@ -7,14 +7,15 @@
 .background {
     height: 100vh;
     background:  linear-gradient(to top, #DBDBD2 80% ,#009688 50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .container {
-    max-width: 1400px;
-    margin: auto auto;
-    height: calc(100% - 10%);
-    position: relative;
-    top: 5%;
+    max-width: 87.5rem;
+    width: 100%;
+    height: calc(100% - 3.75rem);
     border: 1px solid black;
     display: flex;
 }
@@ -111,6 +112,7 @@
     display: flex;
     justify-content: space-between;
     margin: 10px 0;
+    cursor: pointer;
 }
 
 .contact .user {
@@ -170,24 +172,9 @@
 }
 
 .chat-me {
-    text-align: right;
+    display: flex;
 }
 
-.chat .chat-me span{
-    background-color: #d5f9ba;
-    padding: 15px 30px;
-    display: inline-block;
-    border-radius: 10px;
-    margin: 10px;
-}
-
-.chat .chat-you span {
-    background-color: white;
-    padding: 10px;
-    display: inline-block;
-    border-radius: 10px;
-    margin: 10px;
-}
 
 /* input messagge */
 .input-messagge {

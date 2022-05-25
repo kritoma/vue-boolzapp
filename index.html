@@ -44,9 +44,9 @@
                 <!-- contatti -->
                 <div class="contact">
                     <ul>
-                        <li v-for="(contact, index) in contacts">
+                        <li v-for="(contact, index) in contacts" @click="changeContact(index)">
                             <div class="user">
-                                <img :src="contact.img" :alt="contact.avatar">
+                                <img :src="`img/avatar${contact.avatar}.jpg`" :alt="contact.avatar">
                                 <div>
                                     <div><strong>{{contact.name}}</strong></div>
                                     <small>Ultimo messaggio inviato</small>
@@ -61,9 +61,9 @@
             <div class="column-chat">
                 <div class="contact-chat">
                     <div class="user">
-                        <img src="img/avatar_1.jpg" alt="avatar_1">
+                        <img :src="`img/avatar${contacts[currentIndex].avatar}.jpg`" alt="contacts[currentIndex].name">
                         <div>
-                            <div>Michele</div>
+                            <div><strong>{{contacts[currentIndex].name}}</strong></div>
                             <span>Ultimo accesso oggi alle 12:00</span>
                         </div>
                     </div>
@@ -75,9 +75,10 @@
                 </div>
                 <!-- chat -->
                 <div class="chat">
-                    <div class="chat-me"><span>Hai portato a spasso il cane?</span></div>
-                    <div class="chat-me"><span>Ricordati di stendere i panni</span></div>
-                    <div class="chat-you"><span>Tutto fatto!</span></div>
+                    <div class="chat-me" v-for="messaggi in contacts[currentIndex].messagges">
+                        <!-- <div>{{messaggi.messagge}}</div>
+                        <div>{{messaggi.data}}</div> -->
+                    </div>
                 </div>
                 <!-- invio messaggi -->
                 <div class="input-messagge">

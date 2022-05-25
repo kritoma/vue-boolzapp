@@ -1,11 +1,11 @@
 const app = new Vue({
     el: "#app",
     data: {
+        currentIndex : 0,
         contacts: [
             {
                 name: 'Michele',
                 avatar: '_1',
-                img: "img/avatar_1.jpg",
                 visible: true,
                 messages: [
                     {
@@ -28,7 +28,6 @@ const app = new Vue({
             {
                 name: 'Fabio',
                 avatar: '_2',
-                img: "img/avatar_2.jpg",
                 visible: true,
                 messages: [
                     {
@@ -51,7 +50,6 @@ const app = new Vue({
             {
                 name: 'Samuele',
                 avatar: '_3',
-                img: "img/avatar_3.jpg",
                 visible: true,
                 messages: [
                     {
@@ -74,7 +72,6 @@ const app = new Vue({
             {
                 name: 'Alessandro B.',
                 avatar: '_4',
-                img: "img/avatar_4.jpg",
                 visible: true,
                 messages: [
                     {
@@ -92,7 +89,6 @@ const app = new Vue({
             {
                 name: 'Alessandro L.',
                 avatar: '_5',
-                img: "img/avatar_5.jpg",
                 visible: true,
                 messages: [
                     {
@@ -110,7 +106,6 @@ const app = new Vue({
             {
                 name: 'Claudia',
                 avatar: '_6',
-                img: "img/avatar_6.jpg",
                 visible: true,
                 messages: [
                     {
@@ -133,7 +128,6 @@ const app = new Vue({
             {
                 name: 'Federico',
                 avatar: '_7',
-                img: "img/avatar_7.jpg",
                 visible: true,
                 messages: [
                     {
@@ -151,7 +145,6 @@ const app = new Vue({
             {
                 name: 'Davide',
                 avatar: '_8',
-                img: "img/avatar_8.jpg",
                 visible: true,
                 messages: [
                     {
@@ -172,5 +165,10 @@ const app = new Vue({
                 ],
             }
         ]
+    },
+    methods: {
+        changeContact(index) {
+            this.currentIndex = index;
+        }
     }
 })
