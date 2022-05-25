@@ -74,10 +74,12 @@
                     </div>
                 </div>
                 <!-- chat -->
-                <div class="chat">
-                    <div class="chat-me" v-for="messaggi in contacts[currentIndex].messagges">
-                        <!-- <div>{{messaggi.messagge}}</div>
-                        <div>{{messaggi.data}}</div> -->
+                <div class="chats">
+                    <div class="slide-chat" v-for="messaggi in contacts[currentIndex].messages" :class="positionChat(messaggi.status)">
+                        <div :class="colorChat(messaggi.status)" class="chat">
+                            <div class="message">{{messaggi.message}}</div>
+                            <div class="date">{{messaggi.date}}</div>
+                        </div>
                     </div>
                 </div>
                 <!-- invio messaggi -->

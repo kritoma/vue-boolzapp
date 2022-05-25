@@ -164,15 +164,46 @@
 }
 
 /* chat */
-.chat {
+.chats {
     background-image: url(../img/mine.jpg);
     height: calc(100% - 70px - 70px);
     padding: 50px 50px 0 50px;
     
 }
 
-.chat-me {
+.chat {
+    padding: .625rem .9375rem;
+    margin-bottom: 1.25rem;
+    border-radius: 10px;
+}
+
+.chat .date{
+    font-size: .60rem;
+    align-self: flex-end;
+    color: lightslategray;
+}
+
+.chat-right {
     display: flex;
+    justify-content: flex-end;
+}
+
+.chat-left {
+    display: flex;
+}
+
+.chat-green {
+    background-color: #d5f9ba;
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.chat-white {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
 }
 
 

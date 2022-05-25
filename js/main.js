@@ -164,11 +164,29 @@ const app = new Vue({
                     }
                 ],
             }
-        ]
+        ],
     },
     methods: {
         changeContact(index) {
             this.currentIndex = index;
-        }
+        },
+
+        colorChat(chat) {
+            if (chat === "sent" ) {
+                return "chat-green"
+            } else {
+                return "chat-white"
+            }
+        },
+
+        positionChat(chat) {
+            if (chat === "sent" ) {
+                return "chat-right"
+            } else {
+                return "chat-left"
+            }
+        },
+
+        
     }
 })
