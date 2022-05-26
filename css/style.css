@@ -168,6 +168,7 @@
     background-image: url(../img/mine.jpg);
     height: calc(100% - 70px - 70px);
     padding: 50px 50px 0 50px;
+    overflow-y: auto;
     
 }
 

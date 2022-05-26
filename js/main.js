@@ -2,6 +2,8 @@ const app = new Vue({
     el: "#app",
     data: {
         currentIndex : 0,
+        textChat: "",
+        datehours : new Date(),
         contacts: [
             {
                 name: 'Michele',
@@ -163,10 +165,15 @@ const app = new Vue({
                         status: 'received'
                     }
                 ],
+                
             }
-        ],
+        ], 
     },
     methods: {
+        lastMessage(index) {
+            return this.contacts[index].messages[this.contacts[index].messages.length - 1].message;
+        },
+
         changeContact(index) {
             this.currentIndex = index;
         },
@@ -187,6 +194,35 @@ const app = new Vue({
             }
         },
 
-        
-    }
-})
+        lastMessageHour(index) {
+            const dateTime = luxon.DateTime;
+            const mess = this.contacts[index].messages[this.contacts[index].messages.length - 1];
+            return dateTime.fromFormat(mess.date, "dd/MM/yyyy HH:mm:ss").toFormat("HH:mm");
+        },
+
+        addMessage() {
+            const day = this.datehours.getDate();
+            const month = this.datehours.getMonth();
+            const year = this.datehours.getFullYear();
+            const hour = this.datehours.getHours();
+            const minuts = this.datehours.getMinutes();
+            const second = this.datehours.getSeconds();
+            const messages = {
+                date: `${day}/${month}/${year} ${hour}:${minuts}:${second}`,
+                message : this.textChat,
+                status: "sent"
+            };
+            this.contacts[this.currentIndex].messages.push(messages);
+            this.textChat = "";
+            setTimeout( function() {
+                const messagesCPu = {
+                date: `${day}/${month}/${year} ${hour}:${minuts}:${second}`,
+                message : "si",
+                status: "received"
+            };
+            this.contacts[this.currentIndex].messages.push(messagesCPu);
+            }, 1000);
+        },
+
+    },
+});
