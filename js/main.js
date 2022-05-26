@@ -200,28 +200,36 @@ const app = new Vue({
             return dateTime.fromFormat(mess.date, "dd/MM/yyyy HH:mm:ss").toFormat("HH:mm");
         },
 
+
+
         addMessage() {
-            const day = this.datehours.getDate();
-            const month = this.datehours.getMonth();
-            const year = this.datehours.getFullYear();
-            const hour = this.datehours.getHours();
-            const minuts = this.datehours.getMinutes();
-            const second = this.datehours.getSeconds();
-            const messages = {
-                date: `${day}/${month}/${year} ${hour}:${minuts}:${second}`,
-                message : this.textChat,
-                status: "sent"
-            };
-            this.contacts[this.currentIndex].messages.push(messages);
-            this.textChat = "";
-            setTimeout( function() {
-                const messagesCPu = {
-                date: `${day}/${month}/${year} ${hour}:${minuts}:${second}`,
-                message : "si",
-                status: "received"
-            };
-            this.contacts[this.currentIndex].messages.push(messagesCPu);
-            }, 1000);
+            if( this.textChat !== "") {
+                const day = this.datehours.getDate();
+                let month = this.datehours.getMonth();
+                const year = this.datehours.getFullYear();
+                const hour = this.datehours.getHours();
+                let minuts = this.datehours.getMinutes();
+                const second = this.datehours.getSeconds();
+                month++;
+                if (month < 10) {
+                    month = "0" + month;
+                }
+                const messages = {
+                    date: `${day}/${month}/${year} ${hour}:${minuts}:${second}`,
+                    message : this.textChat,
+                    status: "sent",
+                };
+                this.contacts[this.currentIndex].messages.push(messages);
+                this.textChat = "";
+                setTimeout(() => {
+                    const messagesCPu = {
+                    date: `${day}/${month}/${year} ${hour}:${minuts}:${second}`,
+                    message : "si",
+                    status: "received",
+                };
+                this.contacts[this.currentIndex].messages.push(messagesCPu);
+                }, 1000);
+            }
         },
 
     },
