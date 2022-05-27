@@ -17,7 +17,6 @@
     max-width: 87.5rem;
     width: 100%;
     height: calc(100% - 3.75rem);
-    border: 1px solid black;
     display: flex;
 }
 
@@ -75,6 +74,11 @@
     color: #8EDAFC;
 }
 
+.notifications-text small {
+    color: lightslategrey;
+    text-decoration: underline;
+}
+
 /* search */
 
 .search {
@@ -116,6 +120,10 @@
     cursor: pointer;
 }
 
+.contact ul li:hover {
+    background-color:#F4F5F5;
+}
+
 .contact .user {
     display: flex;
     gap: 10px;
@@ -143,7 +151,7 @@
     justify-content: space-between;
     background-color: #E6DFD6;
     padding: 10px;
-    border-left: 1px solid gray;
+    border-left: 1px solid lightgrey;
 }
 
 .contact-chat .user {
