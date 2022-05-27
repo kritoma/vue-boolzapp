@@ -3,7 +3,7 @@ const app = new Vue({
     data: {
         currentIndex : 0,
         textChat: "",
-        datehours : new Date(),
+        textSearch:"",
         contacts: [
             {
                 name: 'Michele',
@@ -200,22 +200,17 @@ const app = new Vue({
             return dateTime.fromFormat(mess.date, "dd/MM/yyyy HH:mm:ss").toFormat("HH:mm");
         },
 
-
+        messageHour() {
+            const dateTime = luxon.DateTime;
+            const mess = this.contacts[index].messages[this.contacts[index].messages.length - 1];
+            return dateTime.fromFormat(mess.date, "dd/MM/yyyy HH:mm:ss").toFormat("HH:mm");
+        },
 
         addMessage() {
             if( this.textChat !== "") {
-                const day = this.datehours.getDate();
-                let month = this.datehours.getMonth();
-                const year = this.datehours.getFullYear();
-                const hour = this.datehours.getHours();
-                let minuts = this.datehours.getMinutes();
-                const second = this.datehours.getSeconds();
-                month++;
-                if (month < 10) {
-                    month = "0" + month;
-                }
+                const dateTime = luxon.DateTime;
                 const messages = {
-                    date: `${day}/${month}/${year} ${hour}:${minuts}:${second}`,
+                    date: dateTime.now().toFormat("dd/MM/yyyy HH:mm:ss"),
                     message : this.textChat,
                     status: "sent",
                 };
@@ -223,7 +218,7 @@ const app = new Vue({
                 this.textChat = "";
                 setTimeout(() => {
                     const messagesCPu = {
-                    date: `${day}/${month}/${year} ${hour}:${minuts}:${second}`,
+                    date: dateTime.now().toFormat("dd/MM/yyyy HH:mm:ss"),
                     message : "si",
                     status: "received",
                 };
@@ -232,5 +227,13 @@ const app = new Vue({
             }
         },
 
+       
+
     },
+    computed: {
+        filterContact() {
+            return this.contacts.filter((contact) => contact.name.toLowerCase().includes(this.textSearch.toLowerCase()))
+            
+        },
+    }
 });
