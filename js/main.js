@@ -216,16 +216,22 @@ const app = new Vue({
                 };
                 this.contacts[this.currentIndex].messages.push(messages);
                 this.textChat = "";
-                setTimeout(() => {
-                    const messagesCPu = {
-                    date: dateTime.now().toFormat("dd/MM/yyyy HH:mm:ss"),
-                    message : "si",
-                    status: "received",
-                };
-                this.contacts[this.currentIndex].messages.push(messagesCPu);
-                }, 1000);
+                
+                this.cpuMessage(this.currentIndex)
             }
         },
+
+        cpuMessage(index) {
+            setTimeout(() => {
+                const dateTime = luxon.DateTime;
+                const messagesCPu = {
+                date: dateTime.now().toFormat("dd/MM/yyyy HH:mm:ss"),
+                message : "si",
+                status: "received",
+            };
+            this.contacts[index].messages.push(messagesCPu);
+            }, 1000);
+        }
 
        
 
